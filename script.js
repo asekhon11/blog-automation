@@ -4,7 +4,7 @@ document.getElementById('blogForm').addEventListener('submit', function(e) {
     const blogContent = this.blogContent.value;
     console.log("Submitting blog content:", blogContent); // Log the content being submitted
 
-    fetch('https://11ae-99-246-144-174.ngrok-free.app/submit-blog', {
+    fetch('https://7137-99-246-144-174.ngrok-free.app/submit-blog', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({ content: blogContent })

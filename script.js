@@ -1,10 +1,15 @@
 document.getElementById('blogForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+    e.preventDefault(); // Prevent the default form submission behavior
 
+    // Get the content of the blog from the form
     const blogContent = this.blogContent.value;
-    console.log("Submitting blog content:", blogContent); // Log the content being submitted
+    console.log("Submitting blog content:", blogContent); // Log the blog content being submitted
 
-    fetch('https://7137-99-246-144-174.ngrok-free.app/submit-blog', {
+    // Use the ngrok URL for the backend service
+    const ngrokURL = 'https://7137-99-246-144-174.ngrok-free.app/submit-blog';
+
+    // Send the blog content to the backend using a POST request
+    fetch(ngrokURL, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({ content: blogContent })
@@ -12,13 +17,13 @@ document.getElementById('blogForm').addEventListener('submit', function(e) {
     .then(response => {
         console.log("Response received:", response);
         if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+            throw new Error(`HTTP error! Status: ${response.status}`);
         }
         return response.json();
     })
     .then(data => {
         console.log("Data received:", data);
-        alert('Blog submitted!');
+        alert('Blog submitted successfully!');
     })
     .catch(error => {
         console.error('Error:', error);

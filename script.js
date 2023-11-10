@@ -1,6 +1,8 @@
 document.getElementById('blogForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+    e.preventDefault(); // This line prevents the default form behavior (which is a GET request)
+
     const blogContent = this.blogContent.value;
+
     fetch('https://11ae-99-246-144-174.ngrok-free.app/submit-blog', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
@@ -12,5 +14,6 @@ document.getElementById('blogForm').addEventListener('submit', function(e) {
     })
     .catch(error => {
         console.error('Error:', error);
+        alert('Failed to submit blog');
     });
 });

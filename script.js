@@ -1,11 +1,11 @@
 document.getElementById('blogForm').addEventListener('submit', function(e) {
-    e.preventDefault(); // This line prevents the default form behavior (which is a GET request)
+    e.preventDefault();
 
     const blogContent = this.blogContent.value;
 
     fetch('https://11ae-99-246-144-174.ngrok-free.app/submit-blog', {
         method: 'POST',
-        headers: {'content': 'application/json'},
+        headers: {'Content-Type': 'application/json'}, // Corrected this line
         body: JSON.stringify({ content: blogContent })
     })
     .then(response => response.json())

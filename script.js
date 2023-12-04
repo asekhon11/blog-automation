@@ -1,62 +1,29 @@
-document.getElementById('blogForm').addEventListener('submit', function(e) {
-    e.preventDefault(); // Prevent the default form submission behavior
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mortgage Blogs</title>
+    <!-- Add any additional head elements here, such as stylesheets or scripts -->
+</head>
+<body>
+    <h1>MORTGAGE BLOGS</h1> <!-- Main title -->
 
-    // Get the content of the blog from the form
-    const blogContent = this.blogContent.value;
-    console.log("Submitting blog content:", blogContent); // Log the blog content being submitted
+    <!-- Blog Submission Section -->
+    <h2>Submit Blog Content</h2>
+    <form id="blogForm">
+        <textarea name="blogContent" placeholder="Enter blog text here..."></textarea>
+        <button type="submit">Submit Blog</button>
+    </form>
 
-    // Use the ngrok URL for the backend service
-    const ngrokURL = 'https://7324-99-246-144-174.ngrok-free.app/submit-blog';
+    <!-- TikTok URL Submission Section -->
+    <h2>Submit TikTok URL</h2>
+    <form id="tiktokForm">
+        <input type="text" name="tiktokURL" placeholder="Enter TikTok URL here...">
+        <button type="submit">Submit TikTok</button>
+    </form>
 
-    // Send the blog content to the backend using a POST request
-    fetch(ngrokURL, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({ content: blogContent })
-    })
-    .then(response => {
-        console.log("Response received:", response);
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log("Data received:", data);
-        alert('Blog submitted successfully!');
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('Failed to submit blog. Check console for details.');
-    });
-});
-
-document.getElementById('tiktokForm').addEventListener('submit', function(e) {
-    e.preventDefault(); // Prevent the default form submission behavior
-
-    const tiktokURL = this.tiktokURL.value;
-    console.log("Submitting TikTok URL:", tiktokURL);
-
-    const ngrokURL = 'https://7324-99-246-144-174.ngrok-free.app/submit-tiktok';
-
-    fetch(ngrokURL, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({ url: tiktokURL })
-    })
-    .then(response => {
-        console.log("Response received:", response);
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log("Data received:", data);
-        alert('TikTok transcribed successfully!');
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('Failed to transcribe TikTok. Check console for details.');
-    });
-});
+    <!-- Place your script.js at the end of the body for better loading performance -->
+    <script src="script.js"></script>
+</body>
+</html>
